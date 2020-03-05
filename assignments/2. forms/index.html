@@ -1,10 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Forms</title>
-  </head>
-  <body></body>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>Forms</title>
+</head>
+
+<body></body>
+<script>
+  var heading = document.createElement("h1");
+  var section = document.createElement("section");
+  heading.textContent = "SignUpForm";
+  document.body.append(section);
+  var firstName = document.createElement("input");
+  var email = document.createElement("input");
+  var password = document.createElement("input");
+  var button = document.createElement("button");
+  button.textContent = "sign-Up"
+  section.append(heading, firstName, email, password, button);
+  firstName.setAttribute("placeholder", "EnterName");
+  email.setAttribute("type", "text");
+  email.setAttribute("placeholder", "EnterYourEmail");
+  email.setAttribute("type", "email");
+  password.setAttribute("placeholder", "EnterPassword");
+  password.setAttribute("type", "password");
+
+
+</script>
+
 </html>
