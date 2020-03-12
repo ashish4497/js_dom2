@@ -39,7 +39,8 @@ input.addEventListener("keyup", function (e) {
       checked: false,
       id: id++
     };
-    todoData.push(obj);
+    console.log(obj, "cdbfkjhdak;fklj")
+    todoData.unshift(obj);
     create(todoData);
     input.value = "";
   }
@@ -117,5 +118,6 @@ function cleartodo() {
   todoData = clearlist;
   create(clearlist);
 }
+
 
 create(todoData);
