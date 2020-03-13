@@ -8,26 +8,51 @@
   <title>Forms</title>
 </head>
 
-<body></body>
+<body>
+  <section>
+    <form>
+      <input class="full_name" type="text" placeholder="Full name">
+      <label class="namelabel"></label>
+      <input class="user_email" type="email" name="" id="" placeholder="Enter Email">
+      <label class="emaillabel"></label>
+      <input class="Password" type="tel" placeholder="Password">
+      <label class="contactlabel"></label>
+      <button class="signUp_btn">sign Up</button>
+    </form>
+  </section>
+</body>
 <script>
-  var heading = document.createElement("h1");
-  var section = document.createElement("section");
-  heading.textContent = "SignUpForm";
-  document.body.append(section);
-  var firstName = document.createElement("input");
-  var email = document.createElement("input");
-  var password = document.createElement("input");
-  var button = document.createElement("button");
-  button.textContent = "sign-Up"
-  section.append(heading, firstName, email, password, button);
-  firstName.setAttribute("placeholder", "EnterName");
-  email.setAttribute("type", "text");
-  email.setAttribute("placeholder", "EnterYourEmail");
-  email.setAttribute("type", "email");
-  password.setAttribute("placeholder", "EnterPassword");
-  password.setAttribute("type", "password");
+  // var inputField = document.querySelectorAll("input");
+  var userName = document.querySelector(".full_name");
+  var email = document.querySelector(".user_email");
+  var contact = document.querySelector(".Password");
+  var btn = document.querySelector(".signUp_btn");
+  var namelabel = document.querySelector(".namelabel");
+  var emaillabel = document.querySelector(".emaillabel");
+  var contactlabel = document.querySelector(".contactlabel");
 
+  function signUpbutton(e) {
+    e.preventDefault();
+    if (userName.value == "") {
+      let p = document.createElement('p')
+      p.textContent = "Name can't be empty!";
+      namelabel.append(p);
+    } else if (email.value == "") {
+      let p = document.createElement('p')
+      p.textContent = "Email can't be empty!";
+      emaillabel.append(p);
 
+    } else if
+      (contact.value == "") {
+      let p = document.createElement('p')
+      p.textContent = "Ph. can't be empty!";
+      emaillabel.append(p);
+    } else {
+      var val = `You are ${userName.value} Your Email ${email.value} Password is ${contact.value}`;
+      alert(`${val}`);
+    }
+  }
+  btn.addEventListener("click", signUpbutton);
 </script>
 
 </html>

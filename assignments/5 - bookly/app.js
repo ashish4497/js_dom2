@@ -8,48 +8,63 @@ let id = 125050;
 
 let bookArray = [
   {
-    bookName: "The Alchamestic",
+    bookName: "The God of Small Things",
     id: id++
   },
   {
-    bookName: "The story book",
+    bookName: "Beloved by Toni Morrison",
     id: id++
   },
   {
-    bookName: "The English book",
+    bookName: "Blood Meridian",
     id: id++
   }
 ];
 
 function addBook(e) {
   e.preventDefault();
-  console.log(addBooks.value, "console the input value");
-  if (e.keyCode == 13) {
-    displayInfo(bookArray);
-  }
 }
 
 function addBookButton(e) {
+  var textVal = addBooks.value;
   e.preventDefault();
-  const bookObj = {
-    bookName: addBooks.value,
-    checked: false,
-    id: id++
-  };
-  console.log(bookObj, "console the Object")
-  bookArray.push(bookObj);
-  displayInfo(bookArray);
+  if (textVal.trim().length !== 0) {
+
+    const bookObj = {
+      bookName: addBooks.value,
+      checked: false,
+      id: id++
+    };
+    bookArray.push(bookObj);
+    displayInfo(bookArray);
+    addBooks.value = "";
+  }
 }
 
 function displayInfo(bookArray = []) {
   ul.textContent = "";
   bookArray.forEach(bookVal => {
     let li = document.createElement("li");
-    li.textContent = bookVal.bookName;
+    li.setAttribute("id", bookVal.id);
+    let button = document.createElement("button");
+    let p = document.createElement("p");
+    button.setAttribute("class", "delete");
+    button.textContent = "Delete";
+    li.append(button);
+    p.textContent = bookVal.bookName;
+    li.append(p);
     ul.append(li);
+    button.addEventListener("click", deleteItem);
   });
-  searchBooks()
 };
+
+function deleteItem(e) {
+  let id = e.target.parentElement.id;
+  console.dir(id);
+  let removed = bookArray.findIndex(item => item.id == id);
+  bookArray.splice(removed, 1);
+  displayInfo(bookArray);
+}
 
 function hideBooks(e) {
   if (hide.checked == true) {
@@ -60,8 +75,11 @@ function hideBooks(e) {
 }
 
 function searchBooks(e) {
-  let val = search.value;
-  console.log(val, "check console val");
+  let val = search.value.toLowerCase();
+  var searchBook = bookArray.filter((book) => {
+    return book.bookName.toLowerCase().includes(val);
+  })
+  displayInfo(searchBook);
 }
 
 addBooks.addEventListener("keyup", addBook);
