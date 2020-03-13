@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <section class="wrapper">
+    <div class="img-sec">
+      <!-- <div class="button"></div> -->
+    </div>
+
+  </section>
+</body>
+<style>
+  .wrapper {
+    max-width: 1140px;
+    margin: 0 auto;
+  }
+
+  img {
+    height: 250px;
+    width: 100%;
+    object-fit: cover;
+    padding: 40px 0;
+  }
+
+  button {
+    display: block;
+    padding: 15px 20px;
+  }
+</style>
+<script>
+  var image = document.querySelector(".img-sec");
+  var button = document.querySelector(".button");
+  let data = [
+    {
+      image:
+        "http://data.mavo.io/portfolio/images/pasted-image-1494464667397.png",
+      name: "Carwash",
+      category: "Painting"
+    },
+    {
+      image:
+        "http://data.mavo.io/portfolio/images/pasted-image-1494528264937.png",
+      name: "Muck Mouth",
+      category: "Painting"
+    },
+    {
+      image:
+        "http://data.mavo.io/portfolio/images/pasted-image-1494528646446.png",
+      name: "Fishwall",
+      category: "Painting"
+    },
+    {
+      image: "http://data.mavo.io/portfolio/images/web-coffe-marilyn.jpg",
+      name: "Web Coffe Marilyn",
+      category: "Painting"
+    },
+    {
+      image:
+        "http://data.mavo.io/portfolio/images/pasted-image-1494903924970.png",
+      name: "Web 3 Jules",
+      category: "Painting"
+    },
+    {
+      image: "http://data.mavo.io/portfolio/images/web-electric3.jpg",
+      name: "Web electric3",
+      category: "Painting"
+    }
+  ];
+
+  function display(e) {
+    data.forEach(val => {
+      let img = document.createElement("img");
+      let btn = document.createElement("button");
+      btn.textContent = "moreInfo";
+      btn.setAttribute("class", "moreInfo");
+      img.setAttribute("src", `${val.image}`);
+      image.append(img);
+      image.append(btn);
+      btn.addEventListener("click", function () {
+        let p = document.createElement("p");
+        let span = document.createElement("span");
+        btn.setAttribute("class", "moreInfo");
+        // img.setAttribute("src", `${val.image}`);
+        p.textContent = `${val.name}`;
+        span.textContent = `${val.category}`;
+        // image.append(img);
+        image.append(p);
+        image.append(span);
+        // display(data);
+
+      });
+    });
+  }
+  display(data);
+
+
+</script>
+
+
+</html>
