@@ -10,7 +10,7 @@
 <body>
   <section class="wrapper">
     <div class="img-sec">
-      <!-- <div class="button"></div> -->
+      <div class="img-info"></div>
     </div>
 
   </section>
@@ -35,7 +35,7 @@
 </style>
 <script>
   var image = document.querySelector(".img-sec");
-  var button = document.querySelector(".button");
+  var imginfo = document.querySelector(".img-info");
   let data = [
     {
       image:
@@ -90,10 +90,9 @@
         p.textContent = `${val.name}`;
         span.textContent = `${val.category}`;
         // image.append(img);
-        image.append(p);
-        image.append(span);
+        imginfo.append(p);
+        imginfo.append(span);
         // display(data);
-
       });
     });
   }
