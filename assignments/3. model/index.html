@@ -9,7 +9,9 @@
 
 <body>
   <section class="wrapper">
-    <div class="img-sec">
+    <div class="main-div">
+      <div class="img-sec">
+      </div>
       <div class="img-info"></div>
     </div>
 
@@ -19,6 +21,12 @@
   .wrapper {
     max-width: 1140px;
     margin: 0 auto;
+  }
+
+  .img-sec {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 20px;
   }
 
   img {
@@ -31,11 +39,29 @@
   button {
     display: block;
     padding: 15px 20px;
+    text-align: center;
+    margin: 0 auto;
+  }
+
+  .himg {
+    width: 100%;
+    height: 300px;
+    object-fit: contain;
+  }
+
+  p {
+    text-align: center;
+  }
+
+  span {
+    display: block;
+    text-align: center;
   }
 </style>
 <script>
   var image = document.querySelector(".img-sec");
   var imginfo = document.querySelector(".img-info");
+
   let data = [
     {
       image:
@@ -74,31 +100,47 @@
   ];
 
   function display(e) {
-    data.forEach(val => {
+    data.map(val => {
       let img = document.createElement("img");
+      let div = document.createElement("div");
       let btn = document.createElement("button");
       btn.textContent = "moreInfo";
       btn.setAttribute("class", "moreInfo");
       img.setAttribute("src", `${val.image}`);
-      image.append(img);
-      image.append(btn);
+      image.append(div);
+      div.append(img);
+      div.append(btn);
+
+      // image.append();
       btn.addEventListener("click", function () {
         let p = document.createElement("p");
         let span = document.createElement("span");
+        let btnexit = document.createElement("button");
+        btnexit.textContent = "exit";
         btn.setAttribute("class", "moreInfo");
-        // img.setAttribute("src", `${val.image}`);
+        img.setAttribute("src", `${val.image}`);
+        img.setAttribute("class", "himg");
+        var div = document.createElement('div');
+        div.style.height = "600px";
+        div.style.width = "600px";
+        div.style.backgroundColor = "gray";
+        div.style.position = "absolute";
+        div.style.left = "30%";
+        div.style.top = "0%";
+        document.body.append(div);
         p.textContent = `${val.name}`;
         span.textContent = `${val.category}`;
-        // image.append(img);
-        imginfo.append(p);
-        imginfo.append(span);
-        // display(data);
+        div.append(img);
+        div.append(p);
+        div.append(span);
+        div.append(btnexit);
+        btnexit.addEventListener("click", function () {
+          div.style.display = "none";
+        });
       });
     });
   }
   display(data);
-
-
 </script>
 
 
