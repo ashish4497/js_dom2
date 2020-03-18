@@ -1,10 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Forms</title>
-  </head>
-  <body></body>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>Forms</title>
+</head>
+
+<body>
+  <section>
+    <form>
+      <input class="full_name" type="text" placeholder="Full name">
+      <label class="namelabel"></label>
+      <input class="user_email" type="email" name="" id="" placeholder="Enter Email">
+      <label class="emaillabel"></label>
+      <input class="Password" type="tel" placeholder="Password">
+      <label class="contactlabel"></label>
+      <button class="signUp_btn">sign Up</button>
+    </form>
+  </section>
+</body>
+<script>
+  // var inputField = document.querySelectorAll("input");
+  var userName = document.querySelector(".full_name");
+  var email = document.querySelector(".user_email");
+  var contact = document.querySelector(".Password");
+  var btn = document.querySelector(".signUp_btn");
+  var namelabel = document.querySelector(".namelabel");
+  var emaillabel = document.querySelector(".emaillabel");
+  var contactlabel = document.querySelector(".contactlabel");
+
+  function signUpbutton(e) {
+    e.preventDefault();
+    if (userName.value == "") {
+      let p = document.createElement('p')
+      p.textContent = "Name can't be empty!";
+      namelabel.append(p);
+    } else if (email.value == "") {
+      let p = document.createElement('p')
+      p.textContent = "Email can't be empty!";
+      emaillabel.append(p);
+
+    } else if
+      (contact.value == "") {
+      let p = document.createElement('p')
+      p.textContent = "Ph. can't be empty!";
+      emaillabel.append(p);
+    } else {
+      var val = `You are ${userName.value} Your Email ${email.value} Password is ${contact.value}`;
+      alert(`${val}`);
+    }
+  }
+  btn.addEventListener("click", signUpbutton);
+</script>
+
 </html>
